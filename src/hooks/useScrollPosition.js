@@ -4,7 +4,7 @@ import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 const isBrowser = typeof window !== `undefined`;
 
-function getScrollPosition({ element, useWindow }) {
+const getScrollPosition = ({ element, useWindow }) => {
   if (!isBrowser) return { x: 0, y: 0 };
 
   const target = element ? element.current : document.body;
@@ -15,7 +15,7 @@ function getScrollPosition({ element, useWindow }) {
     : { x: position.left, y: position.top };
 }
 
-export function useScrollPosition(effect, deps, element, useWindow, wait) {
+export const useScrollPosition = (effect, deps, element, useWindow, wait) => {
   const position = useRef(getScrollPosition({ useWindow }));
 
   let throttleTimeout = null;
